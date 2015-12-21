@@ -1,0 +1,21 @@
+{
+  "name": "generator-yo",
+  "version": "0.0.0",
+  "description": "Generator for aliased generator functionality.",
+  "repository": "stylesuxx/generator-yo",
+  "main": "index.js",
+  "files": [
+    "app"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chris Landa <stylesuxx@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^0.22.1"
+  }
+}
