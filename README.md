@@ -3,8 +3,9 @@
 
 ## Installation
 Install the generator globally:
-
-    sudo npm install generator-ho -g
+```Bash
+sudo npm install generator-ho -g
+```
 
 ## Usage
 To use **ho** with your project just add a *ho.json* file describing your aliases:
