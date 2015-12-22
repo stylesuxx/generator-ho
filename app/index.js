@@ -25,7 +25,10 @@ module.exports = generators.Base.extend({
   initializing: function() {},
   prompting: {},
   configuring: {},
-  default: {},
+  default: {
+    console.log(this)
+    //var command =
+  },
   writing: {},
   conflicts: {},
   install: {},
