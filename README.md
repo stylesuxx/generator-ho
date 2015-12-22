@@ -12,11 +12,18 @@ To use **ho** with your project just add a *ho.json* file describing your aliase
 {
   "command": {
     "generator": "some-generator",
-    "sbugen": "sub"
+    "subgen": "sub"
   }
 }
 ```
 
+### Listing available commands
+To list commands that may be invoked via *ho*, just run:
+```Bash
+yo ho --help
+```
+
+### Invoking commands
 You can now invoke those aliased commands by running:
 ```Bash
 yo ho command arg1 arg2
