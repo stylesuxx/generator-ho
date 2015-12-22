@@ -5,12 +5,12 @@ module.exports = generators.Base.extend({
     generators.Base.apply(this, arguments);
 
     var cwd = this.env.cwd;
-    var commands = this.fs.exists(cwd + '/ho.json') ? require(cwd + '/ho.json') : {};
+    this.commands = this.fs.exists(cwd + '/ho.json') ? require(cwd + '/ho.json') : {};
     var description ='Available commands to invoke:\n\n';
-    for(var command in commands) {
+    for(var command in this.commands) {
       description += '           + ' + command;
-      description += ' (yo ' + commands[command].generator;
-      description += commands[command].subgen ? ':' + commands[command].subgen : '';
+      description += ' (yo ' + this.commands[command].generator;
+      description += this.commands[command].subgen ? ':' + this.commands[command].subgen : '';
       description += ')\n';
     }
     description += '\n         ';
@@ -26,8 +26,14 @@ module.exports = generators.Base.extend({
   prompting: {},
   configuring: {},
   default: {
-    console.log(this)
-    //var command =
+    invoke: function() {
+      var chosen = this.commands[this.args.shift()];
+      var command = [
+        'yo',
+        chosen.generator +
+        (chosen.subgen ? ':' + chosen.subgen : '')
+      ].concat(this.args).join(' ');
+    }
   },
   writing: {},
   conflicts: {},
