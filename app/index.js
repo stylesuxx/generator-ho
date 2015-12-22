@@ -7,14 +7,12 @@ module.exports = generators.Base.extend({
     var cwd = this.env.cwd;
     var commands = this.fs.exists(cwd + '/ho.json') ? require(cwd + '/ho.json') : {};
     var description ='Available commands to invoke:\n\n';
-
     for(var command in commands) {
       description += '           + ' + command;
       description += ' (yo ' + commands[command].generator;
       description += commands[command].subgen ? ':' + commands[command].subgen : '';
       description += ')\n';
     }
-
     description += '\n         ';
 
     this.argument('command', {
