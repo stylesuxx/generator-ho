@@ -1,4 +1,5 @@
 var generators = require('yeoman-generator');
+var cp = require('child_process');
 
 module.exports = generators.Base.extend({
   constructor: function () {
@@ -29,10 +30,11 @@ module.exports = generators.Base.extend({
     invoke: function() {
       var chosen = this.commands[this.args.shift()];
       var command = [
-        'yo',
         chosen.generator +
         (chosen.subgen ? ':' + chosen.subgen : '')
-      ].concat(this.args).join(' ');
+      ].concat(this.args);
+
+      cp.spawn('yo', command, { cwd: this.env.cwd, stdio: 'inherit' });
     }
   },
   writing: {},
