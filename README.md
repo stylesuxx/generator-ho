@@ -1,17 +1,26 @@
-# generator-yo
+# generator-ho
 >Generator for aliased generator functionality.
 
 ## Installation
 Install the generator globally:
 
-    sudo npm install generator-yo -g
+    sudo npm install generator-ho -g
 
 ## Usage
-To invoke the generator create a directory for the generator and run it:
+To use **ho** with your project just add a *ho.json* file describing your aliases:
+```JSON
+{
+  "command": {
+    "generator": "some-generator",
+    "sbugen": "sub"
+  }
+}
+```
 
-    mkdir generator-yo
-    yo generator-yo
-
+You can now invoke those aliased commands by running:
+```Bash
+yo ho command arg1 arg2
+```
 
 ## [MIT](https://opensource.org/licenses/MIT) License
 Copyright (c) 2015 Chris Landa
