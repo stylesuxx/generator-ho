@@ -8,7 +8,7 @@ test('ho:app test', function (t) {
   t.plan(4);
 
   Promise.try(function() {
-    return new Promise((resolve, reject) => {
+    return new Promise(function(resolve, reject) {
       helpers.run(path.join(__dirname, '../app'))
       .inTmpDir(function(tmpDir) {
         fs.copySync(path.join(__dirname, 'ho.json'), path.join(tmpDir, 'ho.json'));
