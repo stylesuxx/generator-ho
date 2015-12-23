@@ -1,5 +1,5 @@
 # generator-ho
-[![Build Status](https://travis-ci.org/stylesuxx/generator-ho.svg)](https://travis-ci.org/stylesuxx/generator-ho)
+[![Build Status](https://travis-ci.org/stylesuxx/generator-ho.svg)](https://travis-ci.org/stylesuxx/generator-ho)  [![Dependency Status](https://david-dm.org/stylesuxx/generator-ho.svg)](https://david-dm.org/stylesuxx/generator-ho)  [![devDependency Status](https://david-dm.org/stylesuxx/generator-ho/dev-status.svg)](https://david-dm.org/stylesuxx/generator-ho#info=devDependencies)
 
 >Generator for aliased generator functionality.
 
