@@ -13,10 +13,13 @@ To use **ho** with your project just add a *ho.json* file describing your aliase
 {
   "command": {
     "generator": "some-generator",
-    "subgen": "sub"
+    "subgen": "sub",
+    "parameters": [ "name"]
   }
 }
 ```
+
+subgen and parameters are optional.
 
 ### Listing available commands
 To list commands that may be invoked via *ho*, just run:
@@ -28,6 +31,53 @@ yo ho --help
 You can now invoke those aliased commands by running:
 ```Bash
 yo ho command arg1 arg2
+```
+
+## Example
+If *ho.json* looks like this:
+```JSON
+{
+  "action": {
+    "generator": "react-webpack-redux",
+    "subgen": "action",
+    "parameters": [ "name" ]
+  },
+  "reducer": {
+    "generator": "react-webpack-redux",
+    "subgen": "reducer",
+    "parameters": [ "name" ]
+  },
+  "component": {
+    "generator": "react-webpack",
+    "subgen": "component",
+    "parameters": [ "name" ]
+  }
+}
+```
+it will produce a help like this:
+```Bash
+Usage:
+  yo ho:app [options] <command>
+
+Options:
+  -h,   --help          # Print the generator's options and usage
+        --skip-cache    # Do not remember prompt answers             Default: false
+        --skip-install  # Do not automatically install dependencies  Default: false
+
+Arguments:
+  command  # Available commands to invoke:
+           + action <name> (yo react-webpack-redux:action <name>)
+           + reducer <name> (yo react-webpack-redux:reducer <name>)
+           + component <name> (yo react-webpack:component <name>)
+
+           Type: String  Required: true
+
+```
+and will allow for the following commands to be executed:
+```Bash
+yo ho action addItem
+yo ho reducer item
+yo ho component ItemList
 ```
 
 ## [MIT](https://opensource.org/licenses/MIT) License
