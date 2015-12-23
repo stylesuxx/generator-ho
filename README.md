@@ -1,4 +1,6 @@
 # generator-ho
+[![Build Status](https://travis-ci.org/stylesuxx/generator-ho.svg)](https://travis-ci.org/stylesuxx/generator-ho)
+
 >Generator for aliased generator functionality.
 
 ## Installation
