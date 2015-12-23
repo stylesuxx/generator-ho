@@ -7,11 +7,17 @@ module.exports = generators.Base.extend({
 
     var cwd = this.env.cwd;
     this.commands = this.fs.exists(cwd + '/ho.json') ? require(cwd + '/ho.json') : {};
-    var description ='Available commands to invoke:\n\n';
+    var description ='Available commands to invoke:\n';
     for(var command in this.commands) {
-      description += '           + ' + command;
+      var current = this.commands[command];
+      var params = "";
+      for(var param of current.parameters) {
+        params += [' <', param, '>'].join('');
+      }
+      description += '           + ' + command + params;
       description += ' (yo ' + this.commands[command].generator;
       description += this.commands[command].subgen ? ':' + this.commands[command].subgen : '';
+      description += params;
       description += ')\n';
     }
     description += '\n         ';
@@ -23,9 +29,6 @@ module.exports = generators.Base.extend({
     });
   },
 
-  initializing: function() {},
-  prompting: {},
-  configuring: {},
   default: {
     invoke: function() {
       var chosen = this.commands[this.args.shift()];
@@ -36,9 +39,5 @@ module.exports = generators.Base.extend({
 
       cp.spawn('yo', command, { cwd: this.env.cwd, stdio: 'inherit' });
     }
-  },
-  writing: {},
-  conflicts: {},
-  install: {},
-  end: {}
+  }
 });
