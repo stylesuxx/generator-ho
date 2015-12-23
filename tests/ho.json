@@ -1,0 +1,22 @@
+{
+  "action": {
+    "generator": "react-webpack-redux",
+    "subgen": "action",
+    "parameters": [ "name" ]
+  },
+  "reducer": {
+    "generator": "react-webpack-redux",
+    "subgen": "reducer",
+    "parameters": [ "name" ]
+  },
+  "component": {
+    "generator": "react-webpack",
+    "subgen": "component",
+    "parameters": [ "name" ]
+  },
+  "test": {
+    "generator": "non-existent",
+    "subgen": "imaginary",
+    "parameters": [ "param1", "param2", "param3" ]
+  }
+}

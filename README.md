@@ -1,5 +1,18 @@
 # generator-ho
+[![npm version](https://badge.fury.io/js/generator-ho.svg)](https://badge.fury.io/js/generator-ho)  [![Build Status](https://travis-ci.org/stylesuxx/generator-ho.svg)](https://travis-ci.org/stylesuxx/generator-ho)
+![Amount of Downloads per month](https://img.shields.io/npm/dm/generator-ho.svg "Amount of Downloads") [![Dependency Status](https://david-dm.org/stylesuxx/generator-ho.svg)](https://david-dm.org/stylesuxx/generator-ho)  [![devDependency Status](https://david-dm.org/stylesuxx/generator-ho/dev-status.svg)](https://david-dm.org/stylesuxx/generator-ho#info=devDependencies)
+
 >Generator for aliased generator functionality.
+
+## Why?
+With a simple JSON config file you can save yourself from a lot of typing and expose all needed sub generators for your generator in a simple way:
+```Bash
+yo react-webpack-redux:action addItem
+# vs
+yo ho action addItem
+```
+
+See *Examples* below for more details.
 
 ## Installation
 Install the generator globally:
@@ -33,7 +46,7 @@ You can now invoke those aliased commands by running:
 yo ho command arg1 arg2
 ```
 
-## Example
+## Examples
 If *ho.json* looks like this:
 ```JSON
 {
