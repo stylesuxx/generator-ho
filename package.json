@@ -1,6 +1,6 @@
 {
   "name": "generator-ho",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Generator for aliased generator functionality.",
   "repository": "stylesuxx/generator-ho",
   "main": "index.js",
@@ -8,7 +8,7 @@
     "app"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ./tests/index.js"
   },
   "author": "Chris Landa <stylesuxx@gmail.com>",
   "license": "MIT",
@@ -17,5 +17,12 @@
   ],
   "dependencies": {
     "yeoman-generator": "^0.22.1"
+  },
+  "devDependencies": {
+    "bluebird": "^3.1.1",
+    "fs-extra": "^0.26.3",
+    "tape": "^4.3.0",
+    "yeoman-assert": "^2.1.1",
+    "yeoman-test": "^1.0.0"
   }
 }

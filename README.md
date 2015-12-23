@@ -1,5 +1,18 @@
 # generator-ho
+[![npm version](https://badge.fury.io/js/generator-ho.svg)](https://badge.fury.io/js/generator-ho)  [![Build Status](https://travis-ci.org/stylesuxx/generator-ho.svg)](https://travis-ci.org/stylesuxx/generator-ho)
+![Amount of Downloads per month](https://img.shields.io/npm/dm/generator-ho.svg "Amount of Downloads") [![Dependency Status](https://david-dm.org/stylesuxx/generator-ho.svg)](https://david-dm.org/stylesuxx/generator-ho)  [![devDependency Status](https://david-dm.org/stylesuxx/generator-ho/dev-status.svg)](https://david-dm.org/stylesuxx/generator-ho#info=devDependencies)
+
 >Generator for aliased generator functionality.
+
+## Why?
+With a simple JSON config file you can save yourself from a lot of typing and expose all needed sub generators for your generator in a simple way:
+```Bash
+yo react-webpack-redux:action addItem
+# vs
+yo ho action addItem
+```
+
+See *Examples* below for more details.
 
 ## Installation
 Install the generator globally:
@@ -13,10 +26,13 @@ To use **ho** with your project just add a *ho.json* file describing your aliase
 {
   "command": {
     "generator": "some-generator",
-    "subgen": "sub"
+    "subgen": "sub",
+    "parameters": [ "name"]
   }
 }
 ```
+
+subgen and parameters are optional.
 
 ### Listing available commands
 To list commands that may be invoked via *ho*, just run:
@@ -28,6 +44,53 @@ yo ho --help
 You can now invoke those aliased commands by running:
 ```Bash
 yo ho command arg1 arg2
+```
+
+## Examples
+If *ho.json* looks like this:
+```JSON
+{
+  "action": {
+    "generator": "react-webpack-redux",
+    "subgen": "action",
+    "parameters": [ "name" ]
+  },
+  "reducer": {
+    "generator": "react-webpack-redux",
+    "subgen": "reducer",
+    "parameters": [ "name" ]
+  },
+  "component": {
+    "generator": "react-webpack",
+    "subgen": "component",
+    "parameters": [ "name" ]
+  }
+}
+```
+it will produce a help like this:
+```Bash
+Usage:
+  yo ho:app [options] <command>
+
+Options:
+  -h,   --help          # Print the generator's options and usage
+        --skip-cache    # Do not remember prompt answers             Default: false
+        --skip-install  # Do not automatically install dependencies  Default: false
+
+Arguments:
+  command  # Available commands to invoke:
+           + action <name> (yo react-webpack-redux:action <name>)
+           + reducer <name> (yo react-webpack-redux:reducer <name>)
+           + component <name> (yo react-webpack:component <name>)
+
+           Type: String  Required: true
+
+```
+and will allow for the following commands to be executed:
+```Bash
+yo ho action addItem
+yo ho reducer item
+yo ho component ItemList
 ```
 
 ## [MIT](https://opensource.org/licenses/MIT) License
