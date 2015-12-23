@@ -4,6 +4,16 @@
 
 >Generator for aliased generator functionality.
 
+## Why?
+With a simple JSON config file you can save yourself from a lot of typing and expose all needed sub generators for your generator in a simple way:
+```Bash
+yo react-webpack-redux:action addItem
+# vs
+yo ho action addItem
+```
+
+See *Examples* below for more details.
+
 ## Installation
 Install the generator globally:
 ```Bash
@@ -36,7 +46,7 @@ You can now invoke those aliased commands by running:
 yo ho command arg1 arg2
 ```
 
-## Example
+## Examples
 If *ho.json* looks like this:
 ```JSON
 {
