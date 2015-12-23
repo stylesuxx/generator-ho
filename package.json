@@ -17,5 +17,10 @@
   ],
   "dependencies": {
     "yeoman-generator": "^0.22.1"
+  },
+  "devDependencies": {
+    "tape": "^4.3.0",
+    "yeoman-assert": "^2.1.1",
+    "yeoman-test": "^1.0.0"
   }
 }
