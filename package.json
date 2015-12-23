@@ -19,6 +19,7 @@
     "yeoman-generator": "^0.22.1"
   },
   "devDependencies": {
+    "fs-extra": "^0.26.3",
     "tape": "^4.3.0",
     "yeoman-assert": "^2.1.1",
     "yeoman-test": "^1.0.0"
