@@ -8,7 +8,7 @@
     "app"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ./tests/index.js"
   },
   "author": "Chris Landa <stylesuxx@gmail.com>",
   "license": "MIT",
