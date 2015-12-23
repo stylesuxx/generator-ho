@@ -32,12 +32,13 @@ module.exports = generators.Base.extend({
   default: {
     invoke: function() {
       var chosen = this.commands[this.args.shift()];
-      var command = [
-        chosen.generator +
-        (chosen.subgen ? ':' + chosen.subgen : '')
-      ].concat(this.args);
+      var generator = chosen.generator + (chosen.subgen ? ':' + chosen.subgen : '');
 
-      cp.spawn('yo', command, { cwd: this.env.cwd, stdio: 'inherit' });
+      this.composeWith(
+        generator,
+        { args: this.args },
+        { link: 'strong' }
+      );
     }
   }
 });
