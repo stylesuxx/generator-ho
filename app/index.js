@@ -1,5 +1,4 @@
 var generators = require('yeoman-generator');
-var cp = require('child_process');
 
 module.exports = generators.Base.extend({
   constructor: function () {
@@ -10,7 +9,7 @@ module.exports = generators.Base.extend({
     var description ='Available commands to invoke:\n';
     for(var command in this.commands) {
       var current = this.commands[command];
-      var params = "";
+      var params = '';
       for(var param of current.parameters) {
         params += [' <', param, '>'].join('');
       }
