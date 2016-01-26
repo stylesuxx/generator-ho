@@ -5,7 +5,8 @@
   "repository": "stylesuxx/generator-ho",
   "main": "index.js",
   "files": [
-    "app"
+    "app",
+    "ho"
   ],
   "scripts": {
     "test": "node ./tests/index.js"
@@ -16,6 +17,8 @@
     "yeoman-generator"
   ],
   "dependencies": {
+    "deep-extend": "^0.4.1",
+    "yeoman-environment": "^1.5.2",
     "yeoman-generator": "^0.22.1"
   },
   "devDependencies": {
