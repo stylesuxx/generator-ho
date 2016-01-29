@@ -12,13 +12,14 @@
     "test": "node ./tests/index.js"
   },
   "author": "Chris Landa <stylesuxx@gmail.com>",
+  "contributors": [
+    "Alexander Zaikov <shurickz@gmail.com>"
+  ],
   "license": "MIT",
   "keywords": [
     "yeoman-generator"
   ],
   "dependencies": {
-    "deep-extend": "^0.4.1",
-    "yeoman-environment": "^1.5.2",
     "yeoman-generator": "^0.22.1"
   },
   "devDependencies": {

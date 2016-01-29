@@ -1,21 +1,19 @@
 'use strict';
 
-var generators = require('yeoman-generator'),
-    environment = require('yeoman-environment'),
-    extend = require('deep-extend');
+var yeoman = require('yeoman-generator');
 
-module.exports = generators.Base.extend({
+module.exports = yeoman.Base.extend({
     constructor: function () {
-        generators.Base.apply(this, arguments);
+        yeoman.Base.apply(this, arguments);
 
         this.description = 'Add new aliases to your ho.json using prompt. Create new ho.json if not exist';
     },
 
     initializing: function () {
 
-        var current = this,
-            env = environment.createEnv(),
-            done = this.async();
+        var current = this;
+        var env = yeoman();
+        var done = this.async();
 
         env.lookup(function () {
             var meta = env.getGeneratorsMeta();
@@ -23,16 +21,15 @@ module.exports = generators.Base.extend({
             current.candidates = {};
 
             Object.keys(meta).forEach(function (generatorNamespace) {
-                var names = generatorNamespace.split(':'),
-                    generatorName = names.shift(),
-                    subgeneratorName = names.shift(),
-                    gen;
+                var names = generatorNamespace.split(':');
+                var generatorName = names.shift();
+                var subgeneratorName = names.shift();
 
                 if (!generatorName || !subgeneratorName) {
                     return;
                 }
 
-                gen = current.candidates[generatorName] || [];
+                var gen = current.candidates[generatorName] || [];
 
                 gen.push(subgeneratorName);
                 current.candidates[generatorName] = gen;
@@ -65,7 +62,7 @@ module.exports = generators.Base.extend({
                     'message': 'Choose subgenerator',
                     'type': 'list',
                     'name': 'subgen',
-                    'choices': this.candidates[this.gen],
+                    'choices': this.candidates[this.gen]
                 }, function (answers) {
                     this.subgen = answers.subgen;
                     done();
@@ -110,21 +107,14 @@ module.exports = generators.Base.extend({
 
     writing: function () {
 
-        var result = {},
-            pathToHo,
-            ho;
+        var pathToHo = this.destinationPath('ho.json');
 
-        result[this.name] = {
+        var ho = this.fs.readJSON(pathToHo, {});
+        ho[this.name] = {
             generator: this.gen,
             subgen: this.subgen,
             parameters: this.params
         };
-
-        pathToHo = this.destinationPath('ho.json');
-
-        ho = this.fs.readJSON(pathToHo, {});
-
-        extend(ho, result);
 
         // forced rewrite ho.json without promt
         this.conflicter.force = true;
