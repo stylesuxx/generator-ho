@@ -5,12 +5,16 @@
   "repository": "stylesuxx/generator-ho",
   "main": "index.js",
   "files": [
-    "app"
+    "app",
+    "ho"
   ],
   "scripts": {
     "test": "node ./tests/index.js"
   },
   "author": "Chris Landa <stylesuxx@gmail.com>",
+  "contributors": [
+    "Alexander Zaikov <shurickz@gmail.com>"
+  ],
   "license": "MIT",
   "keywords": [
     "yeoman-generator"

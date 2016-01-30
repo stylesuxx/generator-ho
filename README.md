@@ -46,6 +46,14 @@ You can now invoke those aliased commands by running:
 yo ho command arg1 arg2
 ```
 
+### Modifying ho.json
+You can add new commands to your ho.json simply by running
+```Bash
+yo ho:ho
+```
+then just follow prompt suggestions.
+
+
 ## Examples
 If *ho.json* looks like this:
 ```JSON
