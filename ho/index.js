@@ -57,7 +57,9 @@ module.exports = yeoman.Base.extend({
         subgen: function () {
             var done = this.async();
 
-            if (this.candidates[this.gen].length > 1) {
+            var subgens = this.candidates[this.gen];
+
+            if (!!subgens && subgens.length > 1) {
                 this.prompt({
                     'message': 'Choose subgenerator',
                     'type': 'list',
@@ -68,7 +70,7 @@ module.exports = yeoman.Base.extend({
                     done();
                 }.bind(this));
             } else {
-                this.subgen = this.candidates[this.gen][0];
+                this.subgen = !!subgens && subgens.length > 0 ? subgens[0] : 'app';
                 done();
             }
         },

@@ -41,3 +41,34 @@ test('ho:app test', function (t) {
     }
   });
 });
+
+test('ho:ho', function(t) {
+  t.plan(5);
+
+  var aliasName = 'testAlias';
+  var genName = 'testGen'
+  var subgenName = 'testSubgen';
+
+  helpers.run(path.join(__dirname, '../ho'))
+    .withPrompts({
+      'name': aliasName,
+      'gen': genName,
+      'subgen': subgenName,
+      'params': ['testPar1', 'testPar2']
+    })
+    .on('end', function() {
+      var resultHo = fs.readJsonSync('./ho.json');
+
+      t.ok(!!resultHo, 'ho.json exists');
+
+      var alias = resultHo[aliasName];
+      t.ok(alias != null, 'valid alias name');
+      t.ok(alias.generator === genName, 'valid generator name');
+      // because prompting checks if there are at least few subgenerators
+      // this prompt doesn't run at all, and subgen sets to default value
+      t.ok(alias.subgen === 'app', 'valid subgenerator name');
+
+      var params = alias['parameters'];
+      t.ok(params.length === 2, 'valid number of params');
+    });
+});
