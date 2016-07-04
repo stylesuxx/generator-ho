@@ -4,8 +4,8 @@ var helpers = require('yeoman-test');
 var fs = require('fs-extra');
 var Promise = require('bluebird');
 
-test('ho:app test', function (t) {
-  t.plan(4);
+test('ho:app test --foo=bar', function (t) {
+  t.plan(6);
 
   Promise.try(function() {
     return new Promise(function(resolve, reject) {
@@ -14,6 +14,7 @@ test('ho:app test', function (t) {
         fs.copySync(path.join(__dirname, 'ho.json'), path.join(tmpDir, 'ho.json'));
       })
       .withArguments(['test'])
+      .withOptions({foo: 'bar'})
       .on('ready', function(gen) {
         var helpMessage = gen.help();
 
@@ -28,6 +29,8 @@ test('ho:app test', function (t) {
         t.ok(resultAction, 'Found action example command in help');
         t.ok(resultReducer, 'Found reducer example command in help');
         t.ok(resultComponent, 'Found component example command in help');
+        t.equal(gen.options.foo, 'bar', 'Option foo is passed');
+        t.equal(gen.args[0], 'test', 'Positional argument \'test\' is passed');
       })
       .on('error', function(err) {
         reject(err);
