@@ -35,7 +35,7 @@ module.exports = generators.Base.extend({
 
       this.composeWith(
         generator,
-        { args: this.args },
+        { args: this.args, options: this.options },
         { link: 'strong' }
       );
     }
